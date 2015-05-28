@@ -1,0 +1,8 @@
+defutf8 on
+hardstatus on  
+hardstatus alwayslastline  
+startup_message off  
+defscrollback 10000
+termcapinfo xterm ti@:te@  
+hardstatus string "%{= kG}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+vbell off

@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/karthik/temp'
+let g:netrw_dirhist_2='/Users/karthik/Code/go/src/bitbucket.org/ntti3esi/gohan/Godeps'
+let g:netrw_dirhist_3='/Users/karthik/temp'
