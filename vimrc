@@ -24,7 +24,7 @@ Plugin 'fs111/pydoc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'vim-scripts/Git-Branch-Info'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'jnwhiteh/vim-golang'
+Plugin 'fatih/vim-go'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
@@ -32,6 +32,9 @@ Plugin 'jelera/vim-javascript-syntax'
 " Exclude colorschemes from vundle, because I am using a custom blackboard
 " colorcheme.
 " Plugin 'flazz/vim-colorschemes'
+
+" Better tasteful indentation.
+Plugin 'hynek/vim-python-pep8-indent'
 
 " Use kevinw/pyflakes-vim if only python is required.
 Plugin 'scrooloose/syntastic'
@@ -73,8 +76,8 @@ colorscheme blackboard
 set guifont="Monaco:h10"
 set gfn=Monaco:h10
 
-set backupdir=~/.vim/sessions
-set dir=~/.vim/sessions
+set nobackup
+set nowritebackup
 
 "filetype on
 "filetype plugin on
@@ -172,9 +175,16 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Enable syntastic underlining
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_python_flake8_args = '--ignore=E121,E122,E123,E124,E125,E126,E127,E128,E711,E712,H233,H302,H303,H404,F403,F811,F841,N309'
+"let g:syntastic_python_flake8_args = '--ignore=E121,E122,E123,E124,E125,E126,E127,E128,E711,E712,H233,H302,H303,H404,F403,F811,F841,N309'
 let g:syntastic_auto_loc_list=0
 let g:syntastic_check_on_open = 1
 
 " NerdTREE settings
 let NERDTreeIgnore=['\.o$', '\.pyc$']
+
+" vim-go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
