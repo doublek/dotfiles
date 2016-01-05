@@ -66,8 +66,6 @@ set viminfo+=!
 set hidden
 set noswapfile
 set vb t_vb=
-set runtimepath+=/usr/local/go/misc/vim
-
 
 syntax on
 autocmd BufEnter * :syntax sync fromstart
@@ -170,14 +168,14 @@ cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
 "
 let g:virtualenv_directory = '/Users/karthik/.venv'
 
-" Go autofmt on save
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
 " Enable syntastic underlining
 let g:syntastic_enable_highlighting = 1
 "let g:syntastic_python_flake8_args = '--ignore=E121,E122,E123,E124,E125,E126,E127,E128,E711,E712,H233,H302,H303,H404,F403,F811,F841,N309'
 let g:syntastic_auto_loc_list=0
 let g:syntastic_check_on_open = 1
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " NerdTREE settings
 let NERDTreeIgnore=['\.o$', '\.pyc$']
@@ -188,3 +186,4 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_fmt_autosave = 0
