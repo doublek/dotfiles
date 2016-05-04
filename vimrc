@@ -22,12 +22,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'fs111/pydoc.vim'
 Plugin 'Shougo/unite.vim'
-Plugin 'vim-scripts/Git-Branch-Info'
-Plugin 'vim-scripts/taglist.vim'
+Plugin 'taq/vim-git-branch-info'
 Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'avakhov/vim-yaml'
 
 " Exclude colorschemes from vundle, because I am using a custom blackboard
 " colorcheme.
@@ -166,7 +167,7 @@ cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
 " set splitbelow
 " set splitright
 "
-let g:virtualenv_directory = '/Users/karthik/.venv'
+let g:virtualenv_directory = '/Users/karthik_ramasubraman/.venv'
 
 " Enable syntastic underlining
 let g:syntastic_enable_highlighting = 1
@@ -187,3 +188,32 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 0
+
+" tagbar settings for golang
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
