@@ -1,0 +1,2 @@
+export GOPATH=$HOME/Code/gohome
+export PATH=$PATH:$GOPATH/bin
