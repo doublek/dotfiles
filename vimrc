@@ -21,14 +21,23 @@ Plugin 'rbgrouleff/bclose.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'fs111/pydoc.vim'
-Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/denite.nvim'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'taq/vim-git-branch-info'
 Plugin 'fatih/vim-go'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'SirVer/ultisnips'
 Plugin 'majutsushi/tagbar'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'avakhov/vim-yaml'
+Plugin 'jceb/vim-orgmode'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/utl.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " Exclude colorschemes from vundle, because I am using a custom blackboard
 " colorcheme.
@@ -51,6 +60,9 @@ Plugin 'simplyzhao/cscope_maps.vim'
 
 " For http://www.vim.org/scripts/script.php?script_id=2771
 Plugin 'pthrasher/conqueterm-vim'
+
+" Colorscheme
+Plugin 'altercation/vim-colors-solarized'
 
 " END plugins
 
@@ -147,8 +159,6 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 " Omni-complete should work with C-x C-o
 " the lines below are just for extra help.
-" Disabling this in favor of jedi-vim
-" autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 let python_highlight_all = 1
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
@@ -182,6 +192,8 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let NERDTreeIgnore=['\.o$', '\.pyc$']
 
 " vim-go settings
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
