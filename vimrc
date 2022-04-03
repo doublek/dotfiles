@@ -22,22 +22,29 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'fs111/pydoc.vim'
 Plugin 'Shougo/denite.nvim'
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'taq/vim-git-branch-info'
 Plugin 'fatih/vim-go'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'SirVer/ultisnips'
 Plugin 'majutsushi/tagbar'
-"Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'avakhov/vim-yaml'
-Plugin 'jceb/vim-orgmode'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" Plugins required by vim-orgmode
+"Plugin 'jceb/vim-orgmode'
+"Plugin 'tpope/vim-repeat'
+"Plugin 'chrisbra/NrrwRgn'
+"Plugin 'mattn/calendar-vim'
+"Plugin 'inkarkat/vim-SyntaxRange'
+
 
 " Exclude colorschemes from vundle, because I am using a custom blackboard
 " colorcheme.
@@ -58,12 +65,15 @@ Plugin 'vim-scripts/python.vim--Vasiliev'
 " github shown below.
 Plugin 'simplyzhao/cscope_maps.vim'
 
-" For http://www.vim.org/scripts/script.php?script_id=2771
-Plugin 'pthrasher/conqueterm-vim'
-
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
 
+" Terraform!
+Plugin 'hashivim/vim-terraform'
+
+" Typescript
+Plugin 'leafgarland/typescript-vim'
+"
 " END plugins
 
 " All of your Plugins must be added before the following line
@@ -177,7 +187,7 @@ cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
 " set splitbelow
 " set splitright
 "
-let g:virtualenv_directory = '/Users/karthik_ramasubraman/.venv'
+let g:virtualenv_directory = '/Users/karthik/.venv'
 
 " Enable syntastic underlining
 let g:syntastic_enable_highlighting = 1
@@ -200,6 +210,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 0
+let g:go_def_mode='gopls'
 
 " tagbar settings for golang
 let g:tagbar_type_go = {
@@ -229,3 +240,31 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
+
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
+let g:terraform_commentstring='//%s'
+let g:terraform_fmt_on_save=1
+
+" Shougo/deoplete.nvim
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+
+" Shougo/denite.nvim
+noremap <C-l> :Denite buffer file/rec file<CR>
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
